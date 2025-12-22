@@ -1,4 +1,4 @@
-name: Node CI (Matrix)
+name: Node CI
 
 on:
   pull_request:
@@ -6,13 +6,9 @@ on:
 
 jobs:
   ci:
-    name: Lint & Test (Node ${{ matrix.node-version }})
+    name: Lint & Test
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
-    strategy:
-      matrix:
-        node-version: [20, 22]
 
     steps:
       - name: Checkout repository
@@ -21,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
